@@ -16,10 +16,11 @@ protected:
       void sortSmaple();
       void createCutPoints();//creat cutpoints by each mapper 
       void Shuffle(); //cutting the data into portions according to the average cutpoints created 
-      void return_cut_puts();
+      void return_cut_puts(); //getting the cutpoints and sending it to the shufflebuffer 
     public:
-        Mapper(int p_index,char * p_input_filename,int p_mapper_count, int p_reducer_counts,ShuffleBuffers * shuffleBuffers);
-        void * threadMainBody (void * arg){
+        Mapper(int p_index,char * p_input_filename,int p_mapper_count, int p_reducer_counts,ShuffleBuffers * shuffleBuffers); //constructor for the mapper 
+        void * threadMainBody (void * arg)
+        { //threading function that goes too times 
             if ( !second_phase)
             {
               readFilePortion(); 
