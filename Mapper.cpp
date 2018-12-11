@@ -74,14 +74,24 @@ void Mapper::sortSample(int *array[], int size)
              
 }
  
- void Mapper::Shuffle()
+void Mapper::Shuffle(int long fsize) //a function that passes objects to the shuffle buffer object by object to be compared to the cutpoints 
  {
-        for(int i = 0; i < teraitem_r; i++)
+     Teraitem_r * teraitems  = (teraitem_r *) calloc (struct_array,sizeof(teraitem_r)); //creating an array of pointers pointing to objects and each object points to a struct in the array 
+     TeraSortItem ** terasortItems = (TeraSortItem **) calloc (fsize,sizeof (TeraSortItem *));
+        for(int i = 0; i < fsize; i++)
         {
-            ShuffleBuffers = struct_array.teraitem_r[teraitem_r];
+            terasortItems[i] = new TeraSortItem (&teraitems[i]); //creating a new object for each index and setting it in terasortItem array 
+            ShuffleBuffers->terasortItems[i]; //passing item by item into the shuffle buffers class 
         }
  }
- 
+
+
+void Mapper::return_objects(TeraSortItem array[]){
+	array = new TeraSortItem [fsize];
+	for(int i = 0; i < fsize; i++){
+		array[i] = terasortItems[i];
+	}
+}
  void Mapper::return_cut_puts(TeraSortItem array[]){
      for(int i = 0; i < cut_pts.size(); i++){
          array[i] = cut_pts[i];
