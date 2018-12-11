@@ -41,9 +41,21 @@ class ShuffleBuffers : ShuffleBuffer
 }
 void append (int buffer_index, teraitem_r *teradata)
 {
-    shuffelBuffer ** ShuffleBuffers = (ShuffleBuffers **) calloc (sizeof teradata,sizeof (shuffelBuffers *));
-    
-    
+    TeraSortItem *shuffle_arr;
+    TeraSortItem greater[5];
+    TeraSortItem smaller[5];
+    TeraSortItem medium[5];
+    for(int i = 0; i < 4; i++){
+        mapper[i].return_objects(shuffle_arr);
+        for(int i = 0; i < array.size(); i++){
+            if(array[i] > shuffle_arr[i])
+                greater[i]=array[i];
+            else if(shuffle_array[i] > array[i])
+                smaller[i]=array[i];
+            else
+                medium[i]=array[i];
+      }
+    shuffleBuffer ** ShuffleBuffers = (ShuffleBuffers **) calloc (sizeof teradata,sizeof (shuffelBuffers *));
 }
 
 void save (char* filename)
